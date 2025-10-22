@@ -6,6 +6,7 @@ html, body{
     font-optical-sizing: auto;
     font-weight: weight;
     font-style: normal;
+    overflow-x: hidden;
 }
 
 #contenedor{
@@ -25,7 +26,7 @@ html, body{
     height: 9vh;
     padding-bottom: 0.5rem;
     padding-top: 0.5rem;
-    z-index: 1;
+    z-index: 2;
 }
 
 #menu {
@@ -42,7 +43,7 @@ html, body{
     justify-content: space-between;
     align-items: flex-start;
     padding: 1rem 0;
-    z-index: 0;
+    z-index: 1;
 }
 
 #contenido{
@@ -242,5 +243,12 @@ html, body{
         background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(content/bosque.jpg);
         background-size: cover;
         background-position: center;
+    }
+
+    #contenedor #objetivos{
+       padding: 2rem 1rem;
+        box-sizing: border-box;
+        width: 100%;
+        overflow-x: hidden;
     }
 }
