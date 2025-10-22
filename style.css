@@ -110,7 +110,21 @@ html, body{
     background-size: cover;
     background-position: center;
     padding: 10rem;
+    padding-bottom: 23rem;
+    height: 40%;
     color: white;
+}
+
+#inicio h2{
+    text-align: center;
+    background-color: #2E382D;
+    padding: 1rem;
+    margin: 0 auto;
+    border-radius: 5rem;
+    margin-top: 5rem;
+}
+#inicio h2:hover{
+    background-color: #4a5849;
 }
 
 
@@ -197,7 +211,7 @@ html, body{
         display: flex;
         flex-direction: column;
         padding: 5rem;
-        padding-bottom: 10rem;
+        padding-bottom: 5rem;
         background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(content/bosque.jpg);
         background-size: cover;
         background-position: center;
