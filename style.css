@@ -22,6 +22,7 @@ html, body{
     background-color: #2E382D;
     position: fixed;
     width: 100%;
+    height: 9vh;
     padding-bottom: 0.5rem;
     padding-top: 0.5rem;
     z-index: 1;
@@ -51,7 +52,7 @@ html, body{
     background-color: rgb(182, 182, 182);
     display: flex;
     flex-direction: column;
-    margin-top: -0.6rem;
+    top: 9vh;
     align-items: center;
     z-index: 0;
 }
@@ -100,6 +101,13 @@ html, body{
 
 #menu li:hover{
     background: #4a5849;
+}
+
+#contenido #inicio{
+    display: flex;
+    flex-direction: column;
+    background-image: url(content/bosque.jpg);
+    padding: 10rem;
 }
 
 
