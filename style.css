@@ -1,7 +1,7 @@
 html, body{
     margin: 0 auto;
     height: 100%;
-    background: rgb(236, 236, 236);
+    background-color: rgb(182, 182, 182);
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-weight: weight;
@@ -109,9 +109,9 @@ html, body{
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(content/bosque.jpg);
     background-size: cover;
     background-position: center;
-    padding: 10rem;
-    padding-bottom: 23rem;
-    height: 40%;
+    justify-content: center;
+    padding-inline: 20vw;
+    height: 90vh;
     color: white;
 }
 
@@ -129,6 +129,31 @@ html, body{
     background-color: #4a5849;
 }
 
+#objetivos{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-inline: 15vw;
+    height: 90vh;
+    background-color: #20291f;
+    color: white;
+}
+#objetivos h1{
+    text-align: center;
+}
+
+#objetivos #fila_objetivo{
+    display: flex;
+    flex-direction: row;
+}
+
+#fila_objetivo #izq, #der{
+    padding: 2rem;
+}
+
+#der img{
+    margin: 0 auto;
+}
 
 
 
