@@ -106,8 +106,11 @@ html, body{
 #contenido #inicio{
     display: flex;
     flex-direction: column;
-    background-image: url(content/bosque.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(content/bosque.jpg);
+    background-size: cover;
+    background-position: center;
     padding: 10rem;
+    color: white;
 }
 
 
@@ -193,7 +196,10 @@ html, body{
     #contenido #inicio{
         display: flex;
         flex-direction: column;
-        padding: 10rem;
-        
+        padding: 5rem;
+        padding-bottom: 10rem;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(content/bosque.jpg);
+        background-size: cover;
+        background-position: center;
     }
 }
