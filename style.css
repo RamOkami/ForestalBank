@@ -115,15 +115,17 @@ html, body{
     color: white;
 }
 
-#inicio h2{
-    text-align: center;
+#inicio a{
+    text-decoration: none;
+    color: white;
+    font-size: 1.5rem;
     background-color: #2E382D;
     padding: 1rem;
     margin: 0 auto;
     border-radius: 5rem;
     margin-top: 5rem;
 }
-#inicio h2:hover{
+#inicio a:hover{
     background-color: #4a5849;
 }
 
