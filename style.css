@@ -82,8 +82,7 @@ html, body{
 }
 
 #menu h1{
-    margin-left: 18px;
-    position: f;
+    padding-inline: 20px;
 }
 #menu #copyr {
     align-self: center;
@@ -98,6 +97,7 @@ html, body{
     text-align: left;
     padding-inline: 20px;
     padding-block: 10px;
+    padding-right: 105px;
 }
 
 #menu li:hover{
@@ -208,7 +208,7 @@ html, body{
     #menu nav {
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: center;
         width: 100%;
         list-style: none;
         margin: 0;
@@ -218,6 +218,7 @@ html, body{
     #menu li {
         list-style: none;
         padding: 0.5rem;
+        padding-bottom: 1.2rem;
         text-align: center;
     }
 
@@ -246,9 +247,21 @@ html, body{
     }
 
     #contenedor #objetivos{
-       padding: 2rem 1rem;
-        box-sizing: border-box;
-        width: 100%;
-        overflow-x: hidden;
+        display: flex;
+        flex-direction: column;
+        padding: 10vh;
+        height: 100%;
+        overflow-x: none;
+    }
+    #objetivos #fila_objetivo{
+        display: flex;
+        flex-direction: column;
+    }
+
+    #objetivos #der img{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 1.2rem;
     }
 }
