@@ -91,6 +91,10 @@ html, body{
     margin-bottom: 0.5rem;
 }
 
+#menu a{
+    text-decoration: none;
+    color: white;
+}
 
 #menu li{
     list-style: none;
@@ -220,6 +224,7 @@ html, body{
         padding: 0.5rem;
         padding-bottom: 1.2rem;
         text-align: center;
+        flex-grow: 1;
     }
 
     #menu li:hover {
