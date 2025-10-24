@@ -196,7 +196,6 @@ html, body{
         width: 100%;
         background-color: #2E382D;
         color: white;
-        flex-grow: 1;
     }
 
     #menu h1,
@@ -210,10 +209,12 @@ html, body{
     }
 
     #menu a{
-        padding-inline: 1rem;
+        padding-inline: 0.4rem;
         text-align: center;
         padding-bottom: 1rem;
         flex-grow: 1;
+        white-space: nowrap;
+        font-size: 0.9rem;
     }
 
     #menu a:hover{
