@@ -82,8 +82,9 @@ html, body{
 }
 
 #menu h1{
-    padding-inline: 20px;
+    padding-inline: 30px;
 }
+
 #menu #copyr {
     align-self: center;
     opacity: 0.4;
@@ -94,18 +95,22 @@ html, body{
 #menu a{
     text-decoration: none;
     color: white;
+    font-size: 1.1rem;
+    padding: 2rem 0 2rem 2rem;
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
 }
 
-#menu li{
-    list-style: none;
-    text-align: left;
-    padding-inline: 20px;
-    padding-block: 10px;
-    padding-right: 105px;
+#menu nav{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
-#menu li:hover{
+#menu a:hover{
     background: #4a5849;
+    width: 210px;
 }
 
 #contenido #inicio{
@@ -170,7 +175,6 @@ html, body{
         display: block;
     }
 
-    /* Header: ocupa todo el ancho, arriba */
     #banner {
         position: fixed;
         top: 0;
@@ -185,58 +189,45 @@ html, body{
         z-index: 10;
     }
 
-    /* Menú fijo en la parte inferior de la pantalla */
     #menu {
         position: fixed;
-        left: 0;
-        top: 12vh;
+        top: 10vh;
+        height: 5rem;
         width: 100%;
-        height: auto;
         background-color: #2E382D;
         color: white;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        padding: 0;
-        z-index: 9;
-        overflow-x: auto;
+        flex-grow: 1;
     }
 
-    /* Quitamos el título y el copyright para ahorrar espacio */
     #menu h1,
     #menu #copyr {
         display: none;
     }
 
-    /* Los enlaces del menú en fila */
-    #menu nav {
+    #menu nav{
         display: flex;
         flex-direction: row;
-        justify-content: center;
-        width: 100%;
-        list-style: none;
-        margin: 0;
-        padding: 0;
     }
 
-    #menu li {
-        list-style: none;
-        padding: 0.5rem;
-        padding-bottom: 1.2rem;
+    #menu a{
+        padding-inline: 1rem;
         text-align: center;
+        padding-bottom: 1rem;
         flex-grow: 1;
     }
 
-    #menu li:hover {
-        background: #4a5849;
+    #menu a:hover{
+        background-color: #4a5849;
+        width: 100%;
     }
 
-    /* Contenido principal */
+
+
     #contenido {
         display: flex;
         flex-direction: column;
-        margin-top: 20vh;    /* deja espacio para el banner */
-        margin-bottom: 8vh;  /* deja espacio para el menú inferior */
+        margin-top: 18vh;    
+        margin-bottom: 8vh;  
         height: auto;
         padding: 0;
     }
