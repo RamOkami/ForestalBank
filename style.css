@@ -211,7 +211,7 @@ html, body{
     #menu a{
         padding-inline: 0.4rem;
         text-align: center;
-        padding-bottom: 1.5rem;
+        padding-bottom: 1.3rem;
         flex-grow: 1;
         white-space: nowrap;
         font-size: 0.9rem;
