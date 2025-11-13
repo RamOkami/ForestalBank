@@ -20,7 +20,10 @@ body {
     line-height: 1.6;
     color: #2E382D; /* Color de texto principal */
     background-color: #F7F7F0; /* Fondo general de la página */
-    transition: background-color 0.3s, color 0.3s; /* Transición suave para el modo oscuro */
+    transition: background-color 0.3s, color 0.3s;
+    
+    /* *** (1) ESCRITORIO: PADDING-TOP SOLO PARA EL #BANNER FIJO (~115px) *** */
+    padding-top: 115px; 
 }
 
 /*
@@ -38,7 +41,7 @@ body {
 
 /*
 =====================================================
-  BANNER / ENCABEZADO
+  BANNER / ENCABEZADO (FIXED)
 =====================================================
 */
 #banner {
@@ -47,8 +50,16 @@ body {
     padding: 20px 30px;
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Para separar el contenido del botón toggle */
+    justify-content: space-between;
     transition: background-color 0.3s;
+    
+    /* ESTILOS PARA FIJAR EL BANNER */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 #banner_izq {
@@ -96,7 +107,7 @@ body {
 
 /*
 =====================================================
-  MENÚ DE NAVEGACIÓN
+  MENÚ DE NAVEGACIÓN (NO fijo en escritorio)
 =====================================================
 */
 #menu {
@@ -107,7 +118,7 @@ body {
     justify-content: space-between;
     align-items: center;
     border-bottom: 4px solid #8AA878;
-    transition: background-color 0.3s, border-bottom-color 0.3s;
+    transition: background-color 0.3s, border-bottom-color 0.3s, top 0.3s;
 }
 
 #menu h1 {
@@ -356,7 +367,7 @@ body.dark-mode {
 
 .dark-mode #contenido h1,
 .dark-mode #contenido h2 {
-    color: #8AA878; /* Los títulos usan el color de acento */
+    color: #8AA878;
 }
 
 .dark-mode #contenido > div {
@@ -407,6 +418,11 @@ body.dark-mode {
     #contenedor {
         box-shadow: none;
     }
+    
+    /* *** (2) TABLET: PADDING-TOP PARA BANNER + MENÚ FIJOS (~155px) *** */
+    body {
+        padding-top: 155px;
+    }
 
     /* Ajuste de Banner */
     #banner {
@@ -417,8 +433,14 @@ body.dark-mode {
         font-size: 1.8em;
     }
     
-    /* Ajuste de Menú (Pasa a ser vertical u horizontal con wrapping) */
+    /* *** HACER EL MENÚ FIJO Y POSICIONARLO BAJO EL BANNER *** */
     #menu {
+        position: fixed;
+        top: 105px; /* Altura del Banner en esta resolución */
+        left: 0;
+        width: 100%;
+        z-index: 999;
+        
         flex-direction: column;
         align-items: flex-start;
         padding: 10px 20px;
@@ -479,8 +501,12 @@ body.dark-mode {
 /* Estilos para móviles pequeños (ancho máximo de 480px) */
 @media (max-width: 480px) {
     
+    /* *** (2) MÓVIL: PADDING-TOP PARA BANNER + MENÚ FIJOS (~150px) *** */
+    body {
+        padding-top: 150px;
+    }
+    
     #banner_izq {
-        /* Pila vertical de Logo y Nombre */
         flex-direction: column;
         align-items: flex-start;
     }
@@ -498,20 +524,24 @@ body.dark-mode {
         height: 50px;
     }
     
+    /* *** AJUSTE DE POSICIÓN TOP DEL MENÚ FIJO *** */
+    #menu {
+        top: 80px; /* Altura del Banner en esta resolución */
+    }
+
     #menu nav a {
         padding: 6px 8px;
         font-size: 0.8em;
     }
 
     #copyr {
-        font-size: 0.65em;
+        display: none;
     }
 
     #boxmap iframe {
         min-height: 300px;
     }
     
-    /* Ajuste del botón en móviles para que no se salga de pantalla */
     #theme-toggle {
         font-size: 1.2em;
         padding: 3px 8px;
