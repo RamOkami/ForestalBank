@@ -22,7 +22,8 @@ body {
     background-color: #F7F7F0;
     transition: background-color 0.3s, color 0.3s;
     
-    padding-top: 115px; /* Altura del banner en escritorio */
+    /* Padding para escritorio (Banner ~115px) */
+    padding-top: 115px; 
 }
 
 /*
@@ -61,36 +62,35 @@ body {
 }
 
 #banner_izq {
-    display: flex; /* Siempre queremos que el logo y el texto estén en línea */
+    display: flex; 
     align-items: center;
-    /* Ajustes para que el contenido no se desborde en pantallas pequeñas */
-    flex-shrink: 1; /* Permite que el elemento se encoja */
-    min-width: 0; /* Permite que el contenido interno se encoja si es necesario */
+    flex-shrink: 1; 
+    min-width: 0; 
 }
 
 #logo {
-    margin-right: 10px; /* Reducido un poco para ahorrar espacio en móviles */
-    flex-shrink: 0; /* Asegura que el logo no se encoja */
+    margin-right: 10px; 
+    flex-shrink: 0; 
 }
 
 #logo img {
     display: block;
     border-radius: 5px;
-    height: 75px; /* Mantener tamaño original para escritorio */
+    height: 75px; 
 }
 
 #nombre_empresa {
-    flex-shrink: 1; /* Permite que el texto se encoja */
-    min-width: 0; /* Importante para que el texto se trunque si no hay espacio */
+    flex-shrink: 1; 
+    min-width: 0; 
 }
 
 #nombre_empresa h1 {
     font-size: 2.2em;
     margin: 0;
     letter-spacing: 1px;
-    white-space: nowrap; /* Intenta mantener el título en una sola línea */
-    overflow: hidden; /* Oculta el texto si se desborda */
-    text-overflow: ellipsis; /* Añade puntos suspensivos si se trunca */
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
 }
 
 #nombre_empresa p {
@@ -102,7 +102,6 @@ body {
     text-overflow: ellipsis;
 }
 
-/* -------------------- ESTILO DEL BOTÓN DARK MODE -------------------- */
 #theme-toggle {
     background: none;
     border: 2px solid white;
@@ -112,29 +111,29 @@ body {
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s, border-color 0.3s;
-    flex-shrink: 0; /* Asegura que el botón no se encoja */
-    margin-left: 15px; /* Espacio entre el texto y el botón */
+    flex-shrink: 0; 
+    margin-left: 15px; 
 }
 
 #theme-toggle:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
-/* -------------------------------------------------------------------- */
 
 /*
 =====================================================
-  MENÚ DE NAVEGACIÓN (NO fijo en escritorio)
+  MENÚ DE NAVEGACIÓN (Global)
 =====================================================
 */
 #menu {
     background-color: #3C4A3B;
     color: white;
-    padding: 10px 30px;
+    padding: 0; /* Quitamos padding contenedor para que los items toquen los bordes si es necesario */
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Centrar todo el bloque nav */
     align-items: center;
     border-bottom: 4px solid #8AA878;
     transition: background-color 0.3s, border-bottom-color 0.3s, top 0.3s;
+    width: 100%;
 }
 
 #menu h1 {
@@ -142,19 +141,24 @@ body {
 }
 
 #menu nav {
-    flex-grow: 1;
-    text-align: right;
+    width: 100%;
+    max-width: 1200px; /* Mismo ancho que el contenedor principal */
+    display: flex;
+    justify-content: center; /* Centrar los items en el medio */
+    flex-wrap: nowrap; /* IMPRESCINDIBLE: No permitir que bajen de línea */
 }
 
 #menu nav a {
     color: white;
     text-decoration: none;
-    padding: 10px 15px;
-    display: inline-block;
+    padding: 15px 20px; /* Padding generoso en PC */
+    display: block;
     transition: background-color 0.3s, color 0.3s;
     font-weight: 600;
     text-transform: uppercase;
     font-size: 0.9em;
+    white-space: nowrap; /* El texto no se parte en dos líneas */
+    text-align: center;
 }
 
 #menu nav a:hover {
@@ -163,10 +167,7 @@ body {
 }
 
 #copyr {
-    font-size: 0.7em;
-    opacity: 0.7;
-    margin-left: 20px;
-    white-space: nowrap;
+    display: none; /* Ocultamos el copyright del menú para limpiar el espacio horizontal */
 }
 
 /*
@@ -435,66 +436,67 @@ body.dark-mode {
         box-shadow: none;
     }
     
+    /* Banner Fijo (aprox 90px) + Menu Fijo (aprox 45px) = 135px */
     body {
-        padding-top: 135px;
+        padding-top: 135px; 
     }
 
-    /* Ajuste de Banner */
     #banner {
         padding: 15px 20px;
     }
 
     #logo img {
-        height: 60px; /* Reducir el tamaño del logo en tablet */
+        height: 60px;
     }
 
     #nombre_empresa h1 {
-        font-size: 1.6em; /* Reducir el tamaño del título en tablet */
+        font-size: 1.6em;
     }
 
     #nombre_empresa p {
-        font-size: 0.7em; /* Reducir el tamaño del subtítulo en tablet */
+        font-size: 0.7em;
     }
     
     #theme-toggle {
-        font-size: 1.3em; /* Reducir el tamaño del botón */
+        font-size: 1.3em;
         padding: 4px 8px;
     }
 
-    /* HACER EL MENÚ FIJO Y POSICIONARLO BAJO EL BANNER */
+    /* AJUSTES DEL MENÚ FIJO HORIZONTAL */
     #menu {
         position: fixed;
-        top: 90px; /* POSICIÓN CLAVE: Ajustada para quedar debajo del Banner fijo */
+        top: 90px; /* Ajustar según altura real del banner */
         left: 0;
         width: 100%;
         z-index: 999;
-        
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 10px 20px;
+        padding: 0;
+        height: 45px; /* Altura forzada para mantener orden */
+        overflow: hidden; /* Evitar scroll */
     }
 
     #menu nav {
-        text-align: center;
-        width: 100%;
         display: flex;
-        flex-wrap: wrap; 
+        width: 100%;
         justify-content: center;
-        gap: 5px;
+        align-items: center;
+        flex-wrap: nowrap; /* NO BAJAR DE LÍNEA */
     }
 
     #menu nav a {
-        padding: 8px 10px;
-        flex-grow: 1;
-        margin: 2px 0;
-        font-size: 0.85em;
+        flex: 1; /* Ocupar espacio disponible equitativamente */
+        padding: 12px 5px; /* Reducir padding lateral drásticamente */
+        margin: 0;
+        font-size: 0.8em; /* Reducir letra */
+        text-align: center;
+        min-width: 0; /* Permitir que se encoja más allá del contenido */
+        text-overflow: clip; /* O clip o ellipsis según prefieras */
     }
     
     #copyr {
         display: none;
     }
 
-    /* Ajuste de Contenido */
+    /* Contenido */
     #contenido > div {
         padding: 40px 20px;
     }
@@ -504,13 +506,11 @@ body.dark-mode {
         margin-bottom: 20px;
     }
     
-    /* Pila vertical de Objetivos */
     #fila_objetivo {
         flex-direction: column;
         gap: 20px;
     }
     
-    /* Pila vertical de Banco de Semillas */
     #bankbox {
         flex-direction: column;
     }
@@ -530,42 +530,40 @@ body.dark-mode {
 @media (max-width: 480px) {
     
     body {
-        padding-top: 135px; /* Mantener padding ajustado */
+        padding-top: 125px; /* Ajuste fino */
     }
     
-    /* *** CORRECCIÓN: Evitar que el logo y el texto se apilen *** */
-    /* Mantenemos flex-direction: row por defecto en #banner_izq */
-    /* Ajustamos el tamaño del logo y texto para que quepan */
+    #banner {
+        padding: 10px 15px;
+    }
+    
     #logo img {
-        height: 50px; /* Reducir aún más el tamaño del logo */
+        height: 50px; 
     }
     #nombre_empresa h1 {
-        font-size: 1.2em; /* Reducir el tamaño del título */
+        font-size: 1.2em; 
     }
     #nombre_empresa p {
-        font-size: 0.6em; /* Reducir el tamaño del subtítulo */
-    }
-    
-    /* CORRECCIÓN: AJUSTE DE POSICIÓN TOP DEL MENÚ FIJO */
-    #menu {
-        top: 80px; /* POSICIÓN CLAVE: Ajustada para quedar debajo del Banner */
-    }
-
-    #menu nav a {
-        padding: 6px 8px;
-        font-size: 0.8em;
-    }
-
-    #copyr {
-        display: none;
-    }
-
-    #boxmap iframe {
-        min-height: 300px;
+        font-size: 0.6em; 
     }
     
     #theme-toggle {
         font-size: 1.2em;
         padding: 3px 8px;
+    }
+    
+    /* AJUSTES ESPECÍFICOS PARA MÓVIL PEQUEÑO */
+    #menu {
+        top: 70px; /* El banner es más pequeño aquí */
+        height: 40px;
+    }
+
+    #menu nav a {
+        padding: 10px 2px; /* Casi sin padding lateral */
+        font-size: 0.65em; /* Fuente MUY pequeña para que quepan 6 items */
+    }
+
+    #boxmap iframe {
+        min-height: 300px;
     }
 }
