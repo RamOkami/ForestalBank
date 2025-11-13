@@ -271,11 +271,12 @@ html, body{
         flex-direction: column;
         height: calc(100vh - 19vh);
         overflow-x: none;
-        background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(content/nahuelbuta.jpg);
+        background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(content/nahuelbuta.jpg);
         background-size: cover;
         background-position: center;
         width: 100%;
         color: white;
+        align-items: center;
     }
 
     #location h1{
@@ -289,15 +290,23 @@ html, body{
     #location h2, p{
         margin-top: -0.5rem;
     }
+    #location span{
+        font-style: italic;
+        font-size: 1.1rem;
+    }
+
+    #location #boxmap{
+        margin: 0 auto;
+        width: 90%;
+    }
 
     #location iframe{
         padding-inline: 1rem;
         background-color: #2E382D;
         border-radius: 1rem;
         height: 30vh;
+        width: 94%;
     }
 
-    #location #boxmap{
-        margin: 0 auto;
-    }
+    
 }
