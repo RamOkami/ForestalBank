@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style_epic.css">
     <title>Proyect Alpha</title>
 </head>
 <body>
@@ -19,6 +19,9 @@
                     <p>Todos los derechos reservados</p>
                 </div>
             </div>
+            <button id="theme-toggle" aria-label="Cambiar tema oscuro/claro">
+                🌙
+            </button>
         </div>
 
         <div id="menu">
@@ -73,14 +76,21 @@
             <div id="bank">
                 <h1>BANCO DE SEMILLAS</h1>
                 <p>Visita nuestro innovador banco de semillas en donde podras realizar una gran variedad de buenas acciones por el medio ambiente.</p>
-                <ul>
-                    <li>Intercambio de semillas</li>
-                    <li>Donacion de semillas</li>
-                    <li>Adquirir nuevas semillas</li>
-                    <li>Consultar stock</li>
-                </ul>
+                <div id="bankbox">
+                    <ul>
+                        <li>Intercambio de semillas</li>
+                        <li>Donacion de semillas</li>
+                        <li>Adquirir nuevas semillas</li>
+                        <li>Consultar stock</li>
+                    </ul>
+                    <div id="render">
+                        <img src="content/banco_semillas.gif" alt="">
+                    </div>
+                </div>
                 <img src="content/huella_chile.png" alt="logo de huella chile" width="40%">
             </div>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>

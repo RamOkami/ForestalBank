@@ -1,0 +1,519 @@
+/*
+=====================================================
+  ESTILOS GLOBALES Y PALETA DE COLORES
+=====================================================
+Paleta:
+- Primary/Dark: #2E382D (Verde Oscuro Principal)
+- Secondary/Medium: #3C4A3B (Verde Oscuro para Menú/Títulos)
+- Accent/Light: #8AA878 (Verde Salvia para Acentos y Botones)
+- Background: #F7F7F0 (Blanco roto/Beige muy claro)
+=====================================================
+*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #2E382D; /* Color de texto principal */
+    background-color: #F7F7F0; /* Fondo general de la página */
+    transition: background-color 0.3s, color 0.3s; /* Transición suave para el modo oscuro */
+}
+
+/*
+=====================================================
+  CONTENEDOR PRINCIPAL
+=====================================================
+*/
+#contenedor {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #FFFFFF; /* Fondo blanco para el contenido */
+    box-shadow: 0 0 25px rgba(46, 56, 45, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+/*
+=====================================================
+  BANNER / ENCABEZADO
+=====================================================
+*/
+#banner {
+    background-color: #2E382D;
+    color: white;
+    padding: 20px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Para separar el contenido del botón toggle */
+    transition: background-color 0.3s;
+}
+
+#banner_izq {
+    display: flex;
+    align-items: center;
+}
+
+#logo {
+    margin-right: 15px;
+}
+
+#logo img {
+    display: block;
+    border-radius: 5px;
+}
+
+#nombre_empresa h1 {
+    font-size: 2.2em;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+#nombre_empresa p {
+    font-size: 0.8em;
+    margin: 0;
+    opacity: 0.8;
+}
+
+/* -------------------- ESTILO DEL BOTÓN DARK MODE -------------------- */
+#theme-toggle {
+    background: none;
+    border: 2px solid white;
+    color: white;
+    font-size: 1.5em;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+#theme-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+/* -------------------------------------------------------------------- */
+
+/*
+=====================================================
+  MENÚ DE NAVEGACIÓN
+=====================================================
+*/
+#menu {
+    background-color: #3C4A3B;
+    color: white;
+    padding: 10px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 4px solid #8AA878;
+    transition: background-color 0.3s, border-bottom-color 0.3s;
+}
+
+#menu h1 {
+    display: none;
+}
+
+#menu nav {
+    flex-grow: 1;
+    text-align: right;
+}
+
+#menu nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: inline-block;
+    transition: background-color 0.3s, color 0.3s;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+#menu nav a:hover {
+    background-color: #8AA878;
+    color: #2E382D;
+}
+
+#copyr {
+    font-size: 0.7em;
+    opacity: 0.7;
+    margin-left: 20px;
+    white-space: nowrap;
+}
+
+/*
+=====================================================
+  CONTENIDO GENERAL
+=====================================================
+*/
+#contenido > div {
+    padding: 50px 40px;
+    border-bottom: 1px solid #E6E6E6;
+    transition: border-bottom-color 0.3s;
+}
+
+#contenido h1 {
+    font-size: 2.2em;
+    color: #3C4A3B;
+    margin-bottom: 30px;
+    border-left: 6px solid #8AA878;
+    padding-left: 15px;
+    transition: color 0.3s;
+}
+
+#contenido h2 {
+    color: #2E382D;
+    margin-bottom: 15px;
+    transition: color 0.3s;
+}
+
+#contenido p {
+    margin-bottom: 20px;
+}
+
+#inicio a {
+    background-color: #8AA878;
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#inicio a:hover {
+    background-color: #2E382D;
+    color: white;
+}
+
+/*
+=====================================================
+  SECCIÓN OBJETIVOS
+=====================================================
+*/
+#fila_objetivo {
+    display: flex;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+#fila_objetivo #izq,
+#fila_objetivo #der {
+    flex: 1;
+    padding: 25px;
+    border: 1px solid #E0E0E0;
+    border-radius: 10px;
+    background-color: #FBFBFB;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+#fila_objetivo li {
+    list-style: none;
+    margin-bottom: 15px;
+    padding-left: 1.5em;
+    position: relative;
+    font-size: 1.05em;
+}
+
+#fila_objetivo li::before {
+    content: '✅';
+    position: absolute;
+    left: 0;
+    font-size: 1em;
+}
+
+#fila_objetivo li p {
+    display: inline;
+    margin: 0;
+}
+
+#obj_ods {
+    color: #8AA878;
+}
+
+#fila_objetivo #der img {
+    margin-top: 20px;
+    display: block;
+    max-width: 90px;
+    height: auto;
+}
+
+/*
+=====================================================
+  SECCIÓN BANK (BANCO DE SEMILLAS)
+=====================================================
+*/
+#bankbox {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin: 40px 0;
+}
+
+#bankbox ul {
+    list-style-type: none;
+    padding: 0;
+    flex: 1;
+}
+
+#bankbox ul li {
+    background-color: #E6EDE4;
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    border-left: 5px solid #2E382D;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: background-color 0.2s, border-left-color 0.3s;
+}
+
+#bankbox ul li:hover {
+    background-color: #DDE5D6;
+}
+
+#render {
+    flex: 1;
+    text-align: center;
+}
+
+#render img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+#bank > img {
+    display: block;
+    margin: 40px auto 0;
+    max-width: 250px;
+    height: auto;
+}
+
+/*
+=====================================================
+  SECCIÓN LOCATION
+=====================================================
+*/
+#boxmap {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#boxmap iframe {
+    max-width: 100%;
+    min-height: 400px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    margin: 25px 0;
+}
+
+#boxmap span {
+    font-weight: bold;
+    color: #8AA878;
+}
+
+#loc {
+    font-style: italic;
+    color: #555;
+    font-size: 0.9em;
+    max-width: 800px;
+    margin: 0 auto 20px;
+    transition: color 0.3s;
+}
+
+/*
+=====================================================
+  ESTILOS DEL MODO OSCURO (DARK MODE)
+=====================================================
+*/
+body.dark-mode {
+    background-color: #121212;
+    color: #E0E0E0;
+}
+
+.dark-mode #contenedor {
+    background-color: #1E1E1E;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+}
+
+.dark-mode #banner {
+    background-color: #1E1E1E;
+}
+
+.dark-mode #menu {
+    background-color: #282828;
+    border-bottom-color: #8AA878;
+}
+
+.dark-mode #menu nav a:hover {
+    background-color: #3C4A3B;
+    color: white;
+}
+
+.dark-mode #contenido h1,
+.dark-mode #contenido h2 {
+    color: #8AA878; /* Los títulos usan el color de acento */
+}
+
+.dark-mode #contenido > div {
+    border-bottom-color: #333333;
+}
+
+.dark-mode #fila_objetivo #izq,
+.dark-mode #fila_objetivo #der {
+    background-color: #282828;
+    border-color: #3A3A3A;
+    box-shadow: none;
+}
+
+.dark-mode #bankbox ul li {
+    background-color: #333333;
+    border-left-color: #8AA878;
+    color: #E0E0E0;
+}
+
+.dark-mode #bankbox ul li:hover {
+    background-color: #444444;
+}
+
+.dark-mode #loc {
+    color: #B0B0B0;
+}
+
+.dark-mode #inicio a {
+    background-color: #8AA878;
+    color: #1E1E1E;
+}
+
+.dark-mode #inicio a:hover {
+    background-color: #5D7A5C;
+    color: white;
+}
+
+
+/*
+=====================================================
+  RESPONSIVIDAD (Media Queries)
+=====================================================
+*/
+
+/* Estilos para tabletas y dispositivos móviles (ancho máximo de 768px) */
+@media (max-width: 768px) {
+    
+    #contenedor {
+        box-shadow: none;
+    }
+
+    /* Ajuste de Banner */
+    #banner {
+        padding: 15px 20px;
+    }
+
+    #nombre_empresa h1 {
+        font-size: 1.8em;
+    }
+    
+    /* Ajuste de Menú (Pasa a ser vertical u horizontal con wrapping) */
+    #menu {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 20px;
+    }
+
+    #menu nav {
+        text-align: center;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap; 
+        justify-content: center;
+        gap: 5px;
+    }
+
+    #menu nav a {
+        padding: 8px 10px;
+        flex-grow: 1;
+        margin: 2px 0;
+        font-size: 0.85em;
+    }
+    
+    #copyr {
+        display: none;
+    }
+
+    /* Ajuste de Contenido */
+    #contenido > div {
+        padding: 40px 20px;
+    }
+    
+    #contenido h1 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+    
+    /* Pila vertical de Objetivos */
+    #fila_objetivo {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    /* Pila vertical de Banco de Semillas */
+    #bankbox {
+        flex-direction: column;
+    }
+    
+    #bankbox ul,
+    #render {
+        flex: auto;
+        width: 100%;
+    }
+    
+    #bankbox ul li {
+        font-size: 0.95em;
+    }
+}
+
+/* Estilos para móviles pequeños (ancho máximo de 480px) */
+@media (max-width: 480px) {
+    
+    #banner_izq {
+        /* Pila vertical de Logo y Nombre */
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    #logo {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+
+    #nombre_empresa h1 {
+        font-size: 1.4em;
+    }
+    
+    #logo img {
+        height: 50px;
+    }
+    
+    #menu nav a {
+        padding: 6px 8px;
+        font-size: 0.8em;
+    }
+
+    #copyr {
+        font-size: 0.65em;
+    }
+
+    #boxmap iframe {
+        min-height: 300px;
+    }
+    
+    /* Ajuste del botón en móviles para que no se salga de pantalla */
+    #theme-toggle {
+        font-size: 1.2em;
+        padding: 3px 8px;
+    }
+}
