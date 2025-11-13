@@ -265,4 +265,39 @@ html, body{
         display: flex;
         padding-top: 1rem;
     }
+
+    #contenido #location{
+        display: flex;
+        flex-direction: column;
+        height: calc(100vh - 19vh);
+        overflow-x: none;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(content/nahuelbuta.jpg);
+        background-size: cover;
+        background-position: center;
+        width: 100%;
+        color: white;
+    }
+
+    #location h1{
+        margin-top: 4rem;
+        margin-bottom: 3rem;
+        text-align: center;
+    }
+    #location h2{
+        font-size: 1.7rem;
+    }
+    #location h2, p{
+        margin-top: -0.5rem;
+    }
+
+    #location iframe{
+        padding-inline: 1rem;
+        background-color: #2E382D;
+        border-radius: 1rem;
+        height: 30vh;
+    }
+
+    #location #boxmap{
+        margin: 0 auto;
+    }
 }
