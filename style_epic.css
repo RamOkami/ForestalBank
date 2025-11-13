@@ -22,8 +22,7 @@ body {
     background-color: #F7F7F0;
     transition: background-color 0.3s, color 0.3s;
     
-    /* (1) ESCRITORIO: PADDING-TOP SOLO PARA EL #BANNER FIJO (~115px) */
-    padding-top: 115px; 
+    padding-top: 115px; /* Altura del banner en escritorio */
 }
 
 /*
@@ -53,7 +52,6 @@ body {
     justify-content: space-between;
     transition: background-color 0.3s;
     
-    /* ESTILOS PARA FIJAR EL BANNER */
     position: fixed;
     top: 0;
     left: 0;
@@ -63,29 +61,45 @@ body {
 }
 
 #banner_izq {
-    display: flex;
+    display: flex; /* Siempre queremos que el logo y el texto estén en línea */
     align-items: center;
+    /* Ajustes para que el contenido no se desborde en pantallas pequeñas */
+    flex-shrink: 1; /* Permite que el elemento se encoja */
+    min-width: 0; /* Permite que el contenido interno se encoja si es necesario */
 }
 
 #logo {
-    margin-right: 15px;
+    margin-right: 10px; /* Reducido un poco para ahorrar espacio en móviles */
+    flex-shrink: 0; /* Asegura que el logo no se encoja */
 }
 
 #logo img {
     display: block;
     border-radius: 5px;
+    height: 75px; /* Mantener tamaño original para escritorio */
+}
+
+#nombre_empresa {
+    flex-shrink: 1; /* Permite que el texto se encoja */
+    min-width: 0; /* Importante para que el texto se trunque si no hay espacio */
 }
 
 #nombre_empresa h1 {
     font-size: 2.2em;
     margin: 0;
     letter-spacing: 1px;
+    white-space: nowrap; /* Intenta mantener el título en una sola línea */
+    overflow: hidden; /* Oculta el texto si se desborda */
+    text-overflow: ellipsis; /* Añade puntos suspensivos si se trunca */
 }
 
 #nombre_empresa p {
     font-size: 0.8em;
     margin: 0;
     opacity: 0.8;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* -------------------- ESTILO DEL BOTÓN DARK MODE -------------------- */
@@ -98,6 +112,8 @@ body {
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s, border-color 0.3s;
+    flex-shrink: 0; /* Asegura que el botón no se encoja */
+    margin-left: 15px; /* Espacio entre el texto y el botón */
 }
 
 #theme-toggle:hover {
@@ -419,7 +435,6 @@ body.dark-mode {
         box-shadow: none;
     }
     
-    /* *** CORRECCIÓN: PADDING-TOP PARA BANNER + MENÚ FIJOS (~135px) *** */
     body {
         padding-top: 135px;
     }
@@ -429,11 +444,24 @@ body.dark-mode {
         padding: 15px 20px;
     }
 
+    #logo img {
+        height: 60px; /* Reducir el tamaño del logo en tablet */
+    }
+
     #nombre_empresa h1 {
-        font-size: 1.8em;
+        font-size: 1.6em; /* Reducir el tamaño del título en tablet */
+    }
+
+    #nombre_empresa p {
+        font-size: 0.7em; /* Reducir el tamaño del subtítulo en tablet */
     }
     
-    /* *** CORRECCIÓN: HACER EL MENÚ FIJO Y POSICIONARLO BAJO EL BANNER *** */
+    #theme-toggle {
+        font-size: 1.3em; /* Reducir el tamaño del botón */
+        padding: 4px 8px;
+    }
+
+    /* HACER EL MENÚ FIJO Y POSICIONARLO BAJO EL BANNER */
     #menu {
         position: fixed;
         top: 90px; /* POSICIÓN CLAVE: Ajustada para quedar debajo del Banner fijo */
@@ -501,30 +529,24 @@ body.dark-mode {
 /* Estilos para móviles pequeños (ancho máximo de 480px) */
 @media (max-width: 480px) {
     
-    /* *** CORRECCIÓN: PADDING-TOP PARA BANNER + MENÚ FIJOS (~135px) *** */
     body {
-        padding-top: 135px;
+        padding-top: 135px; /* Mantener padding ajustado */
     }
     
-    #banner_izq {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    #logo {
-        margin-right: 0;
-        margin-bottom: 5px;
-    }
-
-    #nombre_empresa h1 {
-        font-size: 1.4em;
-    }
-    
+    /* *** CORRECCIÓN: Evitar que el logo y el texto se apilen *** */
+    /* Mantenemos flex-direction: row por defecto en #banner_izq */
+    /* Ajustamos el tamaño del logo y texto para que quepan */
     #logo img {
-        height: 50px;
+        height: 50px; /* Reducir aún más el tamaño del logo */
+    }
+    #nombre_empresa h1 {
+        font-size: 1.2em; /* Reducir el tamaño del título */
+    }
+    #nombre_empresa p {
+        font-size: 0.6em; /* Reducir el tamaño del subtítulo */
     }
     
-    /* *** CORRECCIÓN: AJUSTE DE POSICIÓN TOP DEL MENÚ FIJO *** */
+    /* CORRECCIÓN: AJUSTE DE POSICIÓN TOP DEL MENÚ FIJO */
     #menu {
         top: 80px; /* POSICIÓN CLAVE: Ajustada para quedar debajo del Banner */
     }
