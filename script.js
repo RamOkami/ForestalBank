@@ -40,17 +40,17 @@ toggleButton.addEventListener('click', () => {
 // 1. Base de Datos actualizada con Nivel y Especies solicitadas
 const seedsData = [
     // NIVEL FÁCIL
-    { id: 1, name: "Quillay", scientific: "Quillaja saponaria", difficulty: "facil", stock: 850, img: "🌿" },
-    { id: 2, name: "Peumo", scientific: "Cryptocarya alba", difficulty: "facil", stock: 1200, img: "🍃" },
+    { id: 1, name: "Quillay", scientific: "Quillaja saponaria", difficulty: "facil", stock: 850, img: "content/quillay.png" },
+    { id: 2, name: "Peumo", scientific: "Cryptocarya alba", difficulty: "facil", stock: 1200, img: "content/peumo.png" },
     
     // NIVEL MEDIO
-    { id: 3, name: "Araucaria", scientific: "Araucaria araucana", difficulty: "medio", stock: 500, img: "🌲" },
-    { id: 4, name: "Hualo", scientific: "Nothofagus glauca", difficulty: "medio", stock: 400, img: "🍂" },
-    { id: 5, name: "Lenga", scientific: "Nothofagus pumilio", difficulty: "medio", stock: 250, img: "🌲"},
+    { id: 3, name: "Araucaria", scientific: "Araucaria araucana", difficulty: "medio", stock: 500, img: "content/araucaria.png" },
+    { id: 4, name: "Hualo", scientific: "Nothofagus glauca", difficulty: "medio", stock: 400, img: "content/hualo.png" },
+    { id: 5, name: "Lenga", scientific: "Nothofagus pumilio", difficulty: "medio", stock: 250, img: "content/lenga.png"},
     
     // NIVEL DIFÍCIL
-    { id: 6, name: "Queule", scientific: "Gomortega keule", difficulty: "dificil", stock: 100, img: "🍊" },
-    { id: 7, name: "Pitao", scientific: "Pitavia punctata", difficulty: "dificil", stock: 80, img: "🌳" }
+    { id: 6, name: "Queule", scientific: "Gomortega keule", difficulty: "dificil", stock: 100, img: "content/queule.png" },
+    { id: 7, name: "Pitao", scientific: "Pitavia punctata", difficulty: "dificil", stock: 80, img: "content/pitao.png" }
 ];
 
 // Configuración de los niveles para el renderizado
@@ -66,7 +66,7 @@ const levelsConfig = {
         color: "#F39C12" // Naranja/Amarillo
     },
     dificil: { 
-        title: "🔥 Nivel Difícil", 
+        title: "🔥 Nivel Difícil (Especies Vulnerables)", 
         desc: "Especies difíciles de trabajar y requieren manejo especial.",
         color: "#C0392B" // Rojo
     }
@@ -104,7 +104,7 @@ function renderStock() {
                 card.style.borderTop = `5px solid ${config.color}`;
                 
                 card.innerHTML = `
-                    <div style="font-size: 4em;">${seed.img}</div>
+                    <img src="${seed.img}" alt="Foto de ${seed.name}">
                     <h3>${seed.name}</h3>
                     <p style="font-style: italic; color: #555; margin-bottom: 10px; margin-top: -5px;">${seed.scientific}</p>
                     <div class="stock-badge">Stock: <span id="stock-${seed.id}">${seed.stock}</span> g</div>
