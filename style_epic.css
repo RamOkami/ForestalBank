@@ -670,6 +670,112 @@ body.dark-mode {
     color: #fff;
 }
 
+/* =====================================================
+   ESTILOS DEL FOOTER (PIE DE PÁGINA)
+===================================================== */
+
+#pie-pagina {
+    background-color: #2E382D; /* Verde oscuro principal */
+    color: #F7F7F0; /* Color crema del fondo */
+    padding: 50px 40px 20px;
+    margin-top: 0;
+    border-top: 5px solid #8AA878; /* Línea decorativa verde salvia */
+}
+
+.footer-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 300px;
+}
+
+.footer-col h3 {
+    color: #8AA878;
+    border-bottom: 2px solid #8AA878;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    letter-spacing: 1px;
+}
+
+/* Lista de contacto */
+.contact-list {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-list li {
+    margin-bottom: 10px;
+    font-size: 0.95em;
+}
+
+/* Caja de Donaciones Destacada */
+.donation-box {
+    background-color: #3C4A3B; /* Un poco más claro que el fondo */
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px dashed #8AA878;
+}
+
+.bank-details {
+    background-color: #F7F7F0;
+    color: #2E382D;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 15px;
+    font-family: monospace; /* Para que parezcan datos bancarios */
+}
+
+.bank-details p {
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+.footer-col a{
+    text-decoration: none;
+    color: white;
+}
+.footer-col a:hover{
+    color: #5D7A5C;
+}
+
+/* Barra inferior (Copyright) */
+.footer-bottom {
+    border-top: 1px solid #444;
+    padding-top: 20px;
+    text-align: center;
+    font-size: 0.8em;
+    color: #aaa;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.social-icons a {
+    color: #8AA878;
+    text-decoration: none;
+    margin: 0 5px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: white;
+}
+
+/* AJUSTES MODO OSCURO PARA FOOTER */
+/* Como el footer ya es oscuro, solo ajustamos detalles si es necesario */
+.dark-mode .bank-details {
+    background-color: #1E1E1E;
+    color: #8AA878;
+    border: 1px solid #333;
+}
 
 /*
 =====================================================
@@ -771,6 +877,21 @@ body.dark-mode {
     
     #bankbox ul li {
         font-size: 0.95em;
+    }
+
+    .footer-grid {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    #pie-pagina {
+        padding: 30px 20px;
     }
 }
 
