@@ -788,6 +788,57 @@ body.dark-mode {
     border: 1px solid #333;
 }
 
+/* =========================================
+   NOTIFICACIONES "TOAST" (Reemplazo de Alert)
+   ========================================= */
+
+#toast-container {
+    position: fixed;
+    bottom: 20px;        /* Aparece abajo */
+    right: 20px;         /* A la derecha */
+    z-index: 9999;       /* Por encima de todo */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    min-width: 250px;
+    background-color: #2E382D; /* Fondo oscuro base */
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    
+    /* Animación de entrada */
+    animation: slideIn 0.5s ease, fadeOut 0.5s ease 3s forwards;
+    
+    /* Borde izquierdo de color según tipo */
+    border-left: 5px solid #8AA878; 
+}
+
+/* Tipo Error (Borde Rojo) */
+.toast.error {
+    border-left-color: #C0392B; 
+}
+
+/* Animaciones */
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; transform: translateY(-10px); pointer-events: none;}
+}
+
+
+
+
 /*
 =====================================================
   RESPONSIVIDAD (Media Queries)

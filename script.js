@@ -128,11 +128,11 @@ function addToTrade(id) {
     const qty = parseInt(inputQty.value);
 
     if (isNaN(qty) || qty <= 0) {
-        alert("Por favor ingresa una cantidad de gramos válida.");
+        showToast("Ingresa una cantidad válida.", true); // true = es un error
         return;
     }
     if (qty > seed.stock) {
-        alert(`¡Stock insuficiente! Solo nos quedan ${seed.stock} gramos de ${seed.name}.`);
+        showToast(`¡Stock insuficiente! Solo quedan ${seed.stock} g.`, true);
         return;
     }
 
@@ -140,7 +140,7 @@ function addToTrade(id) {
 
     if (existingItem) {
         if (existingItem.qty + qty > seed.stock) {
-            alert(`No puedes llevar más del stock total (${seed.stock} g).`);
+            showToast(`No puedes llevar más del stock total.`, true);
             return;
         }
         existingItem.qty += qty;
@@ -154,7 +154,8 @@ function addToTrade(id) {
     }
 
     updateTradeList();
-    alert(`Has añadido ${qty} g de ${seed.name} a tu canasta.`);
+    // AQUÍ EL ÉXITO:
+    showToast(`Has añadido ${qty} g de ${seed.name}.`);
 }
 
 // 4. Actualizar lista visual
@@ -239,7 +240,7 @@ document.getElementById('trade-form').addEventListener('submit', (e) => {
         .then(function() {
             // Éxito
             console.log("✅ Correo enviado correctamente");
-            alert(`¡Solicitud Enviada con Éxito!\n\nHemos enviado un comprobante a ${userEmail}.\nGracias por contribuir a Forestal Bank.`);
+            showToast(`¡Solicitud Enviada! Revisa tu correo.`); // Reemplaza el alert largo
             
             tradeCart = [];
             updateTradeList();
@@ -248,7 +249,7 @@ document.getElementById('trade-form').addEventListener('submit', (e) => {
 
         }, function(error) {
             // Error
-            console.error('❌ Error DETALLADO:', error);
+            showToast("Hubo un error al enviar. Intenta nuevamente.", true);
             
             // Mensaje específico para ti si sigue siendo 422
             if(error.status === 422) {
@@ -259,3 +260,27 @@ document.getElementById('trade-form').addEventListener('submit', (e) => {
             btn.innerText = originalText;
         });
 });
+
+// FUNCIÓN PARA MOSTRAR NOTIFICACIONES
+function showToast(message, isError = false) {
+    const container = document.getElementById('toast-container');
+    const toast = document.createElement('div');
+    
+    // Agregamos clases base
+    toast.className = 'toast';
+    
+    // Si es error, agregamos la clase 'error' para que se vea rojo
+    if (isError) {
+        toast.classList.add('error');
+        toast.innerHTML = `<span>⚠️</span> <p>${message}</p>`;
+    } else {
+        toast.innerHTML = `<span>✅</span> <p>${message}</p>`;
+    }
+
+    container.appendChild(toast);
+
+    // Eliminar el elemento del DOM después de 3.5 segundos
+    setTimeout(() => {
+        toast.remove();
+    }, 3500);
+}
