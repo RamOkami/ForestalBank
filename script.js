@@ -34,11 +34,6 @@ toggleButton.addEventListener('click', () => {
 });
 
 // =========================================
-// SISTEMA DE STOCK Y TRUEQUE (GRAMOS)
-// =========================================
-
-// 1. Base de Datos con Nombres Científicos
-// =========================================
 // SISTEMA DE STOCK Y TRUEQUE (CON NIVELES)
 // =========================================
 
@@ -46,15 +41,16 @@ toggleButton.addEventListener('click', () => {
 const seedsData = [
     // NIVEL FÁCIL
     { id: 1, name: "Quillay", scientific: "Quillaja saponaria", difficulty: "facil", stock: 850, img: "🌿" },
-    { id: 2, name: "Peumo", scientific: "Cryptocarya alba", stock: 1200, img: "🍃" },
+    { id: 2, name: "Peumo", scientific: "Cryptocarya alba", difficulty: "facil", stock: 1200, img: "🍃" },
     
     // NIVEL MEDIO
-    { id: 3, name: "Hualo", scientific: "Nothofagus glauca", difficulty: "medio", stock: 400, img: "🍂" },
-    { id: 4, name: "Araucaria", scientific: "Araucaria araucana", difficulty: "medio", stock: 500, img: "🌲" },
+    { id: 3, name: "Araucaria", scientific: "Araucaria araucana", difficulty: "medio", stock: 500, img: "🌲" },
+    { id: 4, name: "Hualo", scientific: "Nothofagus glauca", difficulty: "medio", stock: 400, img: "🍂" },
+    { id: 5, name: "Lenga", scientific: "Nothofagus pumilio", difficulty: "medio", stock: 250, img: "🌲"},
     
     // NIVEL DIFÍCIL
-    { id: 5, name: "Queule", scientific: "Gomortega keule", difficulty: "dificil", stock: 100, img: "🍋" }, // El fruto parece un cítrico amarillo
-    { id: 6, name: "Pitao", scientific: "Pitavia punctata", difficulty: "dificil", stock: 80, img: "🌳" }
+    { id: 6, name: "Queule", scientific: "Gomortega keule", difficulty: "dificil", stock: 100, img: "🍊" },
+    { id: 7, name: "Pitao", scientific: "Pitavia punctata", difficulty: "dificil", stock: 80, img: "🌳" }
 ];
 
 // Configuración de los niveles para el renderizado
@@ -81,51 +77,37 @@ let tradeCart = [];
 // 2. Renderizar Stock por Categorías
 function renderStock() {
     const container = document.getElementById('seed-container');
-    container.innerHTML = ''; // Limpiar contenido previo
-    
-    // Quitamos la clase grid-seeds del contenedor principal para manejar sub-secciones
+    container.innerHTML = ''; 
     container.classList.remove('grid-seeds'); 
 
-    // Iteramos por cada nivel de dificultad (facil, medio, dificil)
     ['facil', 'medio', 'dificil'].forEach(levelKey => {
-        
-        // Filtramos las semillas de este nivel
         const groupSeeds = seedsData.filter(s => s.difficulty === levelKey);
         
         if (groupSeeds.length > 0) {
             const config = levelsConfig[levelKey];
-
-            // Crear contenedor del nivel
             const levelSection = document.createElement('div');
             levelSection.className = 'level-section';
             
-            // Título del nivel
             levelSection.innerHTML = `
                 <div class="level-header" style="border-left-color: ${config.color};">
                     <h2 style="color: ${config.color};">${config.title}</h2>
                     <p>${config.desc}</p>
                 </div>
-                <div class="grid-seeds">
-                    </div>
+                <div class="grid-seeds"></div>
             `;
 
-            // Encontrar el div .grid-seeds que acabamos de crear dentro de esta sección
             const grid = levelSection.querySelector('.grid-seeds');
 
-            // Crear las tarjetas para este grupo
             groupSeeds.forEach(seed => {
                 const card = document.createElement('div');
                 card.className = 'seed-card';
-                // Añadimos un borde superior del color del nivel
                 card.style.borderTop = `5px solid ${config.color}`;
                 
                 card.innerHTML = `
                     <div style="font-size: 4em;">${seed.img}</div>
                     <h3>${seed.name}</h3>
                     <p style="font-style: italic; color: #555; margin-bottom: 10px; margin-top: -5px;">${seed.scientific}</p>
-                    
                     <div class="stock-badge">Stock: <span id="stock-${seed.id}">${seed.stock}</span> g</div>
-                    
                     <div class="seed-actions">
                         <input type="number" id="qty-${seed.id}" min="10" step="10" max="${seed.stock}" value="50">
                         <span style="font-size: 0.8em; margin-left: 5px; margin-right: 10px;">g</span>
@@ -134,21 +116,17 @@ function renderStock() {
                 `;
                 grid.appendChild(card);
             });
-
             container.appendChild(levelSection);
         }
     });
 }
 
-// ... El resto de las funciones (addToTrade, updateTradeList, etc.) se mantienen igual ...
-
-// 3. Añadir al intercambio (Lógica en gramos)
+// 3. Añadir al intercambio
 function addToTrade(id) {
     const seed = seedsData.find(s => s.id === id);
     const inputQty = document.getElementById(`qty-${id}`);
-    const qty = parseInt(inputQty.value); // Cantidad en gramos
+    const qty = parseInt(inputQty.value);
 
-    // Validaciones
     if (isNaN(qty) || qty <= 0) {
         alert("Por favor ingresa una cantidad de gramos válida.");
         return;
@@ -158,7 +136,6 @@ function addToTrade(id) {
         return;
     }
 
-    // Buscar si ya existe en el carrito
     const existingItem = tradeCart.find(item => item.id === id);
 
     if (existingItem) {
@@ -180,7 +157,7 @@ function addToTrade(id) {
     alert(`Has añadido ${qty} g de ${seed.name} a tu canasta.`);
 }
 
-// 4. Actualizar lista visual (Tu Canasta)
+// 4. Actualizar lista visual
 function updateTradeList() {
     const list = document.getElementById('trade-list');
     list.innerHTML = '';
@@ -192,7 +169,6 @@ function updateTradeList() {
 
     tradeCart.forEach((item, index) => {
         const li = document.createElement('li');
-        // Muestra Nombre común + (Nombre científico) + Gramos
         li.innerHTML = `
             <div>
                 <strong>${item.name}</strong> <small>(${item.scientific})</small>
@@ -211,22 +187,58 @@ function removeFromTrade(index) {
     updateTradeList();
 }
 
-// 6. Manejo del formulario final
+// 6. MANEJO DEL FORMULARIO CON EMAILJS (SOLO UNA VEZ)
+// 6. MANEJO DEL FORMULARIO CON EMAILJS (CORREGIDO)
 document.getElementById('trade-form').addEventListener('submit', (e) => {
     e.preventDefault(); 
 
     if (tradeCart.length === 0) {
-        alert("Tu canasta está vacía.");
+        alert("Tu canasta está vacía. Selecciona semillas del stock primero.");
         return;
     }
 
+    // 1. Obtener datos
+    const userEmail = document.getElementById('user-email').value;
     const userSeed = document.getElementById('user-seed').value;
     const userQty = document.getElementById('user-qty').value;
+    const userNotes = document.getElementById('user-notes').value;
 
-    // Mensaje final actualizado
-    alert(`¡Solicitud de Intercambio Enviada!\n\nRecibirás tus semillas seleccionadas.\n\nA cambio entregarás: ${userQty} g de ${userSeed}.\n\n¡Gracias por ayudar a la biodiversidad!`);
+    // 2. Formatear lista para el correo
+    let cartDetailsString = tradeCart.map(item => 
+        `- ${item.name} (${item.qty} g)`
+    ).join('\n');
 
-    tradeCart = [];
-    updateTradeList();
-    document.getElementById('trade-form').reset();
+    // 3. Parámetros para EmailJS
+    const templateParams = {
+        to_email: userEmail,
+        offer_seed: userSeed,
+        offer_qty: userQty,
+        cart_details: cartDetailsString,
+        notes: userNotes
+    };
+
+    // Feedback visual
+    const btn = document.querySelector('.btn-trade');
+    const originalText = btn.innerText;
+    btn.innerText = "ENVIANDO SOLICITUD...";
+
+    // 4. Enviar correo
+    // AQUI ESTABA EL ERROR: Faltaba tu llave pública al final.
+    // He puesto tus IDs reales según tus fotos:
+    emailjs.send('service_nib3nwc', 'template_4iwa5of', templateParams, 'KuBkrJG6RziEyJpBl')
+        .then(function() {
+            // Éxito
+            alert(`¡Solicitud Enviada con Éxito!\n\nHemos enviado un comprobante a ${userEmail}.\nGracias por contribuir a Forestal Bank.`);
+            
+            tradeCart = [];
+            updateTradeList();
+            document.getElementById('trade-form').reset();
+            btn.innerText = originalText;
+
+        }, function(error) {
+            // Error
+            console.error('Error al enviar correo:', error);
+            alert("Hubo un error al enviar el correo. Por favor revisa tu conexión.");
+            btn.innerText = originalText;
+        });
 });

@@ -19,9 +19,7 @@
                     <p>Todos los derechos reservados</p>
                 </div>
             </div>
-            <button id="theme-toggle" aria-label="Cambiar tema oscuro/claro">
-                🌙
-            </button>
+            <button id="theme-toggle" aria-label="Cambiar tema oscuro/claro">🌙</button>
         </div>
 
         <div id="menu">
@@ -42,7 +40,7 @@
                 <h1>INICIO</h1>
                 <p>Nuestra empresa "Forestal Bank" lider en la preservacion y reforestacion de bosques y areas verdes, buscamos ser una reserva biologica para mantener la biodiversidad de especies vegetales en Chile ayudando a la reforestacion en los momentos de catastrofes.</p>
                 <p>Gracias a nuestro innovador Banco de Semillas mantenemos un stock controlado de semillas, y esto permite el intercambio de ellas de forma comunitaria, para incentivar la reforestacion.</p>
-                <a href="https://youtu.be/dQw4w9WgXcQ?si=4eBOSTfDj_QBNDmg">CONOCE MAS</a>
+                <a href="#bank">CONOCE MAS</a>
             </div>
 
             <div id="objetivos">
@@ -104,6 +102,8 @@
                         <p>Para mantener el ciclo, ¿qué semillas ofreces a la comunidad?</p>
                         
                         <form id="trade-form">
+                            <label for="user-email">Tu Correo Electrónico:</label>
+                            <input type="email" id="user-email" placeholder="nombre@ejemplo.com" required>
                             <label for="user-seed">Nombre de tu semilla:</label>
                             <input type="text" id="user-seed" placeholder="Ej: Araucaria, Peumo..." required>
                             
@@ -122,7 +122,7 @@
             <div id="location">
                 <h1>ENCUENTRANOS</h1>
                 <div id="boxmap">
-                    <h2>CEDE PRINCIPAL</h2>
+                    <h2>SEDE PRINCIPAL</h2>
                     <p>Parque Nacional <span>"Nahuelbuta - Region de Biobio"</span></p>
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d807161.5475750124!2d-73.41266911365125!3d-37.79063044890376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x966a46b93b6989d9%3A0xb8566814f4a0eb20!2sParque%20Nacional%20Nahuelbuta!5e0!3m2!1ses!2scl!4v1762993485613!5m2!1ses!2scl" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     <p id="loc">Localizacion escogida estrategicamente por poseer un 40% de su bosque con solo especies endemicas y ser epicentro de incendios forestales.</p>
@@ -133,6 +133,7 @@
         </div>
     </div>
 
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
