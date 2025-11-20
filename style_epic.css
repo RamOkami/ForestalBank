@@ -422,6 +422,193 @@ body.dark-mode {
     color: white;
 }
 
+/* =====================================================
+  ESTILOS NUEVOS: STOCK Y TRADE
+=====================================================
+*/
+
+/* Grid de Semillas */
+.grid-seeds {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.seed-card {
+    background-color: #FBFBFB;
+    border: 1px solid #E0E0E0;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.seed-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+}
+
+.seed-card img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    border: 3px solid #8AA878;
+}
+
+.seed-card h3 {
+    color: #2E382D;
+    margin-bottom: 5px;
+}
+
+.seed-card .stock-info {
+    color: #555;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.seed-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.seed-actions input {
+    width: 60px;
+    padding: 8px;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.btn-add {
+    background-color: #3C4A3B;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-add:hover {
+    background-color: #8AA878;
+}
+
+/* Layout de Intercambio */
+.trade-layout {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.trade-box {
+    flex: 1;
+    min-width: 300px;
+    background-color: #FFF;
+    border: 1px solid #E6E6E6;
+    border-radius: 8px;
+    padding: 25px;
+}
+
+.trade-box h2 {
+    font-size: 1.5em;
+    border-bottom: 2px solid #8AA878;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+#trade-list {
+    list-style: none;
+    padding: 0;
+}
+
+#trade-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.empty-msg {
+    font-style: italic;
+    color: #999;
+    text-align: center;
+}
+
+/* Formulario */
+.trade-box form label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #3C4A3B;
+}
+
+.trade-box form input,
+.trade-box form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    font-family: inherit;
+}
+
+.btn-trade {
+    width: 100%;
+    background-color: #8AA878;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background 0.3s;
+}
+
+.btn-trade:hover {
+    background-color: #2E382D;
+}
+
+/* AJUSTES MODO OSCURO */
+.dark-mode .seed-card,
+.dark-mode .trade-box {
+    background-color: #1E1E1E;
+    border-color: #333;
+}
+
+.dark-mode .seed-card h3,
+.dark-mode .trade-box h2,
+.dark-mode .trade-box form label {
+    color: #8AA878;
+}
+
+.dark-mode .seed-card .stock-info,
+.dark-mode .empty-msg {
+    color: #BBB;
+}
+
+.dark-mode .seed-actions input,
+.dark-mode .trade-box form input,
+.dark-mode .trade-box form textarea {
+    background-color: #282828;
+    border-color: #444;
+    color: white;
+}
+
+.dark-mode #trade-list li {
+    border-bottom-color: #333;
+}
+
 
 /*
 =====================================================

@@ -30,8 +30,8 @@
                 <a href="#inicio">HOME</a>
                 <a href="#objetivos">ABOUT US</a>
                 <a href="#bank">BANK</a>
-                <a href="">TRADE</a>
-                <a href="">STOCK</a>
+                <a href="#stock">STOCK</a>
+                <a href="#trade">TRADE</a>
                 <a href="#location">LOCATION</a>
             </nav>
             <p id="copyr">©Copyright 2025</p>
@@ -89,6 +89,48 @@
                 </div>
                 <img src="content/huella_chile.png" alt="logo de huella chile" width="40%">
             </div>
+
+            <div id="stock">
+                <h1>STOCK DE SEMILLAS</h1>
+                <p>Revisa nuestras semillas disponibles. Selecciona la cantidad y agrégalas a tu lista de intercambio sustentable.</p>
+                
+                <div id="seed-container" class="grid-seeds">
+                </div>
+            </div>
+
+            <div id="trade">
+                <h1>ZONA DE INTERCAMBIO</h1>
+                <div class="trade-layout">
+                    
+                    <div class="trade-box">
+                        <h2>TU CANASTA (RECIBES)</h2>
+                        <ul id="trade-list">
+                            <li class="empty-msg">Aún no has seleccionado semillas.</li>
+                        </ul>
+                    </div>
+
+                    <div class="trade-box form-box">
+                        <h2>TU OFERTA (ENTREGAS)</h2>
+                        <p>Para mantener el ciclo, ¿qué semillas ofreces a la comunidad?</p>
+                        
+                        <form id="trade-form">
+                            <label for="user-seed">Nombre de tu semilla:</label>
+                            <input type="text" id="user-seed" placeholder="Ej: Araucaria, Peumo..." required>
+                            
+                            <label for="user-qty">Peso aproximado (en gramos):</label>
+                            <input type="number" id="user-qty" min="1" placeholder="10" required>
+
+                            <label for="user-notes">Notas adicionales (opcional):</label>
+                            <textarea id="user-notes" rows="3" placeholder="¿Están limpias? ¿De qué zona son?"></textarea>
+
+                            <button type="submit" class="btn-trade">CONFIRMAR TRUEQUE</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
     </div>
 
     <script src="script.js"></script>
