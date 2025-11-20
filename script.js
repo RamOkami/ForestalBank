@@ -187,10 +187,15 @@ function removeFromTrade(index) {
     updateTradeList();
 }
 
-// 6. MANEJO DEL FORMULARIO CON EMAILJS (SOLO UNA VEZ)
-// 6. MANEJO DEL FORMULARIO CON EMAILJS (CORREGIDO)
+// 6. MANEJO DEL FORMULARIO CON EMAILJS (VERSIÓN BLINDADA)
 document.getElementById('trade-form').addEventListener('submit', (e) => {
     e.preventDefault(); 
+
+    // --- TUS CREDENCIALES EXACTAS ---
+    const SERVICE_ID = 'service_nib3nwc';
+    const TEMPLATE_ID = 'template_4iwa5of';
+    const PUBLIC_KEY = 'KuBkrJG6RziEyJpBl';
+    // --------------------------------
 
     if (tradeCart.length === 0) {
         alert("Tu canasta está vacía. Selecciona semillas del stock primero.");
@@ -203,12 +208,12 @@ document.getElementById('trade-form').addEventListener('submit', (e) => {
     const userQty = document.getElementById('user-qty').value;
     const userNotes = document.getElementById('user-notes').value;
 
-    // 2. Formatear lista para el correo
+    // 2. Formatear lista
     let cartDetailsString = tradeCart.map(item => 
         `- ${item.name} (${item.qty} g)`
     ).join('\n');
 
-    // 3. Parámetros para EmailJS
+    // 3. Parámetros
     const templateParams = {
         to_email: userEmail,
         offer_seed: userSeed,
@@ -220,14 +225,20 @@ document.getElementById('trade-form').addEventListener('submit', (e) => {
     // Feedback visual
     const btn = document.querySelector('.btn-trade');
     const originalText = btn.innerText;
-    btn.innerText = "ENVIANDO SOLICITUD...";
+    btn.innerText = "ENVIANDO...";
 
-    // 4. Enviar correo
-    // AQUI ESTABA EL ERROR: Faltaba tu llave pública al final.
-    // He puesto tus IDs reales según tus fotos:
-    emailjs.send('service_nib3nwc', 'template_4iwa5of', templateParams, 'KuBkrJG6RziEyJpBl')
+    // 4. FORZAR INICIALIZACIÓN (Esto arregla el error 422)
+    try {
+        emailjs.init(PUBLIC_KEY);
+    } catch (err) {
+        console.log("Error al inicializar:", err);
+    }
+
+    // 5. Enviar
+    emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams)
         .then(function() {
             // Éxito
+            console.log("✅ Correo enviado correctamente");
             alert(`¡Solicitud Enviada con Éxito!\n\nHemos enviado un comprobante a ${userEmail}.\nGracias por contribuir a Forestal Bank.`);
             
             tradeCart = [];
@@ -237,8 +248,14 @@ document.getElementById('trade-form').addEventListener('submit', (e) => {
 
         }, function(error) {
             // Error
-            console.error('Error al enviar correo:', error);
-            alert("Hubo un error al enviar el correo. Por favor revisa tu conexión.");
+            console.error('❌ Error DETALLADO:', error);
+            
+            // Mensaje específico para ti si sigue siendo 422
+            if(error.status === 422) {
+                alert("Error de autenticación (422). El servidor no reconoce la Public Key. Revisa si tienes activado un AdBlocker.");
+            } else {
+                alert("Hubo un error al enviar. Revisa la consola (F12) para más detalles.");
+            }
             btn.innerText = originalText;
         });
 });
