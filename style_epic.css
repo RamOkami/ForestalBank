@@ -302,6 +302,11 @@ body {
 #bankbox ul li:hover {
     background-color: #DDE5D6;
 }
+#bankbox a{
+    text-decoration: none;
+    color: black;
+    background: none;
+}
 
 #render {
     flex: 1;
@@ -403,10 +408,16 @@ body.dark-mode {
     border-left-color: #8AA878;
     color: #E0E0E0;
 }
+.dark-mode #bankbox a{
+    background: none;
+    border-left-color: #8AA878;
+    color: #E0E0E0;
+}
 
 .dark-mode #bankbox ul li:hover {
-    background-color: #444444;
+    background-color: #5a5a5a;
 }
+
 
 .dark-mode #loc {
     color: #B0B0B0;
